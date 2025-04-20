@@ -2,12 +2,16 @@ class UserState {}
 
 final class UserIntial extends UserState{}
 
-final class LoginSuccess extends UserState{}
+final class SigninLoadingState extends UserState{}
 
-final class LoginLoading extends UserState{}
+final class SigninSuccessState extends UserState{
+  final String successmsg;
 
-final class LoginFailed extends UserState{
+  SigninSuccessState({required this.successmsg});
+}
+
+final class SigninFailedState extends UserState{
   final String errormsg;
 
-  LoginFailed({required this.errormsg});
+  SigninFailedState({required this.errormsg});
 }

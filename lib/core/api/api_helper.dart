@@ -5,6 +5,12 @@ abstract class EndPoints {
 }
 
 abstract class ApiKeys {
+  static const email = 'statemailus';
+  static const password = 'password';
+  static const message = 'message';
+  static const token = 'token';
+  static const id = 'id';
+
   static const status = 'status';
   static const ErrorMessage = 'ErrorMessage';
 }

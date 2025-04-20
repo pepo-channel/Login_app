@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signin_app/core/utils/helper.dart';
 import 'package:signin_app/core/widgets/picture_box.dart';
 import 'package:signin_app/core/widgets/submit_button.dart';
 import 'package:signin_app/core/widgets/text_form_field.dart';
+import 'package:signin_app/cunits/user%20cubit/user_cubit.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({super.key});
@@ -14,7 +16,7 @@ class SignupForm extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            // key: ,
+            key: context.read<UserCubit>().signup_form,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -29,6 +31,7 @@ class SignupForm extends StatelessWidget {
                   hinttext: 'Ibrahim....',
                   preffixicon: AssetsData.ApersonIcon,
                   textInputType: TextInputType.text,
+                  textEditingController: context.read<UserCubit>().signup_name,
                 ),
                 SizedBox(height: 20,),
                 // Email
@@ -37,6 +40,7 @@ class SignupForm extends StatelessWidget {
                   hinttext: 'user@gmail.com',
                   preffixicon: AssetsData.AemailIcon,
                   textInputType: TextInputType.emailAddress,
+                  textEditingController: context.read<UserCubit>().signup_email,
                 ),
                 SizedBox(height: 20,),
                 // phone number
@@ -45,6 +49,7 @@ class SignupForm extends StatelessWidget {
                   hinttext: '01xxxxxxxxx',
                   preffixicon: AssetsData.AnumberIcon,
                   textInputType: TextInputType.number,
+                  textEditingController: context.read<UserCubit>().signup_phone,
                 ),
                 SizedBox(height: 20,),
                 // passwrod
@@ -53,6 +58,7 @@ class SignupForm extends StatelessWidget {
                   hinttext: 'Enter yourpassword',
                   preffixicon: AssetsData.AkeyIcon,
                   textInputType: TextInputType.visiblePassword,
+                  textEditingController: context.read<UserCubit>().signup_password,
                 ),
                 SizedBox(height: 20,),
                 // confirm passwrod
@@ -61,6 +67,7 @@ class SignupForm extends StatelessWidget {
                   hinttext: 'Confrim your password',
                   preffixicon: AssetsData.AkeyIcon,
                   textInputType: TextInputType.visiblePassword,
+                  textEditingController: context.read<UserCubit>().signup_confirmpassword,
                 ),
                 SizedBox(height: 30,),
                 SubmitButton(
