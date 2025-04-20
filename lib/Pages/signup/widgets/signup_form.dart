@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:signin_app/core/functions/function_helper.dart';
 import 'package:signin_app/core/utils/helper.dart';
 import 'package:signin_app/core/widgets/picture_box.dart';
 import 'package:signin_app/core/widgets/snackbar.dart';
@@ -20,11 +21,11 @@ class SignupForm extends StatelessWidget {
           isloading = true;
         } if(state is SignupSuccessState){
           isloading = false;
-          ScaffoldMessenger.of(context).showSnackBar(CustomSnakBar(message: state.successmsg, undo: false, onaction: null));
+          GetCustomSnackBar(context: context, state: state, messsage: state.successmsg, undo: false, onaction: null);
           Navigator.pushReplacementNamed(context, PageNameData.LogInScreen);
         } if(state is SignupFailedState){
           isloading = false;
-          ScaffoldMessenger.of(context).showSnackBar(CustomSnakBar(message: state.errormsg, undo: false, onaction: null));
+          GetCustomSnackBar(context: context, state: state, messsage: state.errormsg, undo: false, onaction: null);
         }
       },
       builder: (context, state) {
