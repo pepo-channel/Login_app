@@ -1,14 +1,14 @@
 
 import 'package:signin_app/core/api/api_helper.dart';
 
-class SigninModel {
+class LoginModel {
   final String message;
   final String token;
 
-  SigninModel({required this.message, required this.token});
+  LoginModel({required this.message, required this.token});
 
-  factory SigninModel.fromJson(Map<String, dynamic> json){
-    return SigninModel(
+  factory LoginModel.fromJson(Map<String, dynamic> json){
+    return LoginModel(
       message: json[ApiKeys.message],
       token: json[ApiKeys.token],
     );

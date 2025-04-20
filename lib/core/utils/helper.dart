@@ -18,6 +18,7 @@ abstract class AssetsData {
   static const LoginLightLogo = 'assets/login_lights.png';
   static const SignupLogo = 'assets/SignUp.png';
   static const SignupLightLogo = 'assets/Signup_lights.png';
+  static const AvatarImage = 'assets/avatar.jpg';
   // svgs
   static const ApersonIcon = 'assets/person.svg';
   static const AkeyIcon = 'assets/key.svg';

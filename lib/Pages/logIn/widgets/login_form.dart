@@ -15,15 +15,17 @@ class LoginForm extends StatelessWidget {
   bool isloading = false;
     return BlocConsumer<UserCubit, UserState>(
       listener: (context, state) {
-        if(state is SigninLoadingState){
+        if(state is LoginLoadingState){
           isloading = true;
-        } if(state is SigninSuccessState){
+        } if(state is LoginSuccessState){
           isloading = false;
-          // set delay to get data and navigator to profile screen
-          CustomSnakBar(message: state.successmsg, undo: false, onaction: null,);
-        } if(state is SigninFailedState){
+          ScaffoldMessenger.of(context).showSnackBar(CustomSnakBar(message: state.successmsg, undo: false, onaction: null,));
+          context.read<UserCubit>().GetUserData();
+          Navigator.pushReplacementNamed(context, PageNameData.ProfileScreen);          
+        } if(state is LoginFailedState){
           isloading = false;
-          CustomSnakBar(message: state.errormsg, undo: false, onaction: null,);
+          ScaffoldMessenger.of(context).showSnackBar(CustomSnakBar(message: state.errormsg, undo: false, onaction: null,));
+          
         }
       },
       builder: (context, state) {
@@ -62,7 +64,7 @@ class LoginForm extends StatelessWidget {
                           context.read<UserCubit>().login_passwrod,
                     ),
                     SizedBox(height: 30),
-                    !isloading? CircularProgressIndicator() : SubmitButton(
+                    isloading? CircularProgressIndicator() : SubmitButton(
                       text: 'Login ',
                       ontap: () {
                         if (context
