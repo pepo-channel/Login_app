@@ -37,7 +37,6 @@ class UserCubit extends Cubit<UserState> {
     emit(UserProfileState());
   }
 
-
   LoginModel? loginuser; 
   Signin() async{
     try {
